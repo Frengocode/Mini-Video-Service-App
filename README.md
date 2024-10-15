@@ -28,7 +28,7 @@ Kafka (для межсервисной коммуникации)
 Шаг 1: Клонирование репозитория
 bash
 Копировать код
-git clone https://github.com/Frengocode/Meno.git
+git clone https://github.com/Frengocode/Auth-Video-Service.git
 cd Meno
 Шаг 2: Настройка сервиса авторизации (Auth-Video-Service)
 Чтобы запустить сервис авторизации, выполните следующие шаги:
