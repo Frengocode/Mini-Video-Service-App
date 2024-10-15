@@ -2,7 +2,7 @@ from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-VIDEO_SERVICE_DATABASE_URL = 'postgresql+asyncpg://postgres:python$_venv@localhost:5432/VideoService'
+VIDEO_SERVICE_DATABASE_URL = 'postgresql+asyncpg://username:password@localhost:5432/VideoService'
 
 Base = declarative_base()
 
