@@ -1,44 +1,91 @@
-# 🚀 Meno - Video Service App
-
-[![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com/)
-[![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-FCA121?style=for-the-badge&logo=python&logoColor=white)](https://www.sqlalchemy.org/)
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
-[![Swagger](https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=swagger&logoColor=black)](https://swagger.io/)
-[![Pydantic](https://img.shields.io/badge/Pydantic-3776AB?style=for-the-badge&logo=pydantic&logoColor=white)](https://docs.pydantic.dev/latest/)
-![Kafka](https://img.shields.io/badge/kafka-%23231F20.svg?style=for-the-badge&logo=apachekafka&logoColor=white)
+##🚀 Meno - Video Service App
 
 
-## 📚 Features
+##📚 Описание
+Video Service App — это видеохостинговое приложение, которое позволяет пользователям загружать, просматривать и взаимодействовать с видео-контентом, добавлять комментарии, а также отслеживать просмотры. Проект построен на основе микросервисной архитектуры, что делает его масштабируемым и гибким. Это приложение включает в себя несколько сервисов:
 
-- **User Authentication & Authorization**: Secure login, signup, and JWT-based token management.
-- **Content Sharing**: Users can upload photos, reels, and interact with them through likes and comments.
-- **Efficient Database Management**: Utilizing PostgreSQL with SQLAlchemy ORM and Alembic for migrations.
-  
-## 🛠️ Tech Stack
+Auth-Video-Service для авторизации и аутентификации.
+Mini-Video-Service-App для управления видео и комментариями.
+## 📦 Особенности
+Пользовательская аутентификация и авторизация: JWT-токены для управления доступом.
+Загрузка и обработка видео: Асинхронная обработка для повышения производительности.
+Комментарии и просмотры: Возможность добавлять комментарии и отслеживать просмотры.
+Микросервисная архитектура: Сервисы взаимодействуют через Kafka и REST API.
+Построено с использованием FastAPI для быстрой разработки и высокой производительности.
+## 🛠️ Стек технологий
+Backend: FastAPI — высокопроизводительный фреймворк для создания API.
+База данных: PostgreSQL — мощная объектно-реляционная база данных.
+ORM: SQLAlchemy — инструмент для работы с SQL и объектно-реляционное отображение.
+Миграции: Alembic — инструмент для управления миграциями.
+Сообщения: Kafka — распределенная система потоковой передачи данных.
+## 🖥️ Установка
+Необходимые компоненты
+Перед установкой убедитесь, что у вас установлены следующие компоненты:
 
-- **Backend**: [FastAPI](https://fastapi.tiangolo.com/) - High-performance framework for building APIs.
-- **Database**: [PostgreSQL](https://www.postgresql.org/) - Powerful, open-source object-relational database.
-- **ORM**: [SQLAlchemy](https://www.sqlalchemy.org/) - Python SQL toolkit and Object Relational Mapper.
-- **Real-time Communication**: WebSocket for handling real-time notifications and updates.
-- **Containerization**: [Docker](https://www.docker.com/) - Ensures the application runs smoothly in different environments.
-- **Task Scheduling**: [Apscheduler](https://apscheduler.readthedocs.io/en/latest/) - Advanced Python scheduler.
-  
-
-## 🖥️ Installation
-
-### Prerequisites
-
-Ensure you have the following installed:
-
-- [Python 3.10+](https://www.python.org/downloads/)
-- [PostgreSQL](https://www.postgresql.org/download/) (for database management)
-- ![Kafka](https://img.shields.io/badge/kafka-%23231F20.svg?style=for-the-badge&logo=apachekafka&logoColor=white)
-
-### Clone the Repository and You need to specify DATABASE_URL in database/database.py 
-
-```bash
+Python 3.10+
+PostgreSQL (для управления базами данных)
+Kafka (для межсервисной коммуникации)
+Шаг 1: Клонирование репозитория
+bash
+Копировать код
 git clone https://github.com/Frengocode/Meno.git
 cd Meno
-uvicorn main.main:app --reload
+Шаг 2: Настройка сервиса авторизации (Auth-Video-Service)
+Чтобы запустить сервис авторизации, выполните следующие шаги:
 
-DATABASE_URL  = postgresql://username:password@localohost/Meno
+Клонируйте репозиторий сервиса авторизации:
+
+```bash
+Копировать код
+git clone https://github.com/Frengocode/Auth-Video-Service.git
+cd Auth-Video-Service
+Настройте виртуальное окружение и установите зависимости:
+
+```bash
+Копировать код
+python -m venv venv
+source venv/bin/activate  # для Linux/Mac
+.\venv\Scripts\activate  # для Windows
+pip install -r requirements.txt
+Укажите переменные окружения, такие как DATABASE_URL в файле src.core.database.py.
+
+Запустите сервис:
+
+```bash
+Копировать код
+uvicorn app.app:app --reload --host ваш_IP_адрес:8000
+Шаг 3: Настройка видео-сервиса (Mini-Video-Service-App)
+Войдите в директорию с проектом:
+
+```bash
+Копировать код
+cd Mini-Video-Service-App
+Настройте виртуальное окружение и установите зависимости:
+
+```bash
+Копировать код
+python -m venv venv
+source venv/bin/activate  # для Linux/Mac
+.\venv\Scripts\activate  # для Windows
+pip install -r requirements.txt
+Укажите переменные окружения, такие как VIDEO_SERVICE_DATABASE_URL в файле src.services.video_service.database.py.
+
+Запустите приложение:
+
+```bash
+Копировать код
+uvicorn app.app:app --reload --port 8001
+Теперь ваш Mini-Video-Service-App работает на порту localhost:8001.
+
+##🛡️ Переменные окружения
+Для правильной работы сервисов убедитесь, что переменные окружения настроены для каждого сервиса:
+
+DATABASE_URL для Auth-Video-Service.
+VIDEO_SERVICE_DATABASE_URL для Mini-Video-Service-App.
+##📖 Документация API
+Документация для всех сервисов доступна через Swagger UI:
+
+Auth-Video-Service: http://localhost:8000/docs
+Mini-Video-Service-App: http://localhost:8001/docs
+$##🐳 Docker (опционально)
+Вы также можете настроить и запустить приложение с использованием Docker. (Инструкции по Docker можно добавить позже.)
