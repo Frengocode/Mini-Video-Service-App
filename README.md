@@ -29,7 +29,6 @@ Kafka (для межсервисной коммуникации)
 bash
 Копировать код
 git clone https://github.com/Frengocode/Auth-Video-Service.git
-cd Meno
 Шаг 2: Настройка сервиса авторизации (Auth-Video-Service)
 Чтобы запустить сервис авторизации, выполните следующие шаги:
 
