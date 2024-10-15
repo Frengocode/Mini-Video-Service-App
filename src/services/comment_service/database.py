@@ -7,7 +7,7 @@ import logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-DATABASE_URL = "postgresql+asyncpg://postgres:python$_venv@localhost:5432/CommetBase"
+DATABASE_URL = "postgresql+asyncpg://username:password@localhost:5432/CommetBase"
 
 CommentBase = declarative_base()
 
